@@ -1,0 +1,52 @@
+<div class="ui raised segment">
+    {{#if content}}
+      <table class="ui table">
+        <thead>
+          <tr>
+            <th class="ui collapsing">
+              <div class="ui fitted toggle checkbox" id="checkboxheader">
+                <input type="checkbox" {{action "toogleall" on="change" target="view"}}><label></label>
+              </div>
+            </th>
+            <th>
+              <div>
+              Name
+              </div>
+            </th>
+            <th>
+              <div>
+              next
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each person in content}}
+            <tr>
+              <td class="ui collapsing">  
+                <div class="ui fitted toggle row checkbox">
+                  <input type="checkbox"><label></label>
+                </div>
+              </td>
+              <td>
+              {{#link-to 'person.edit' person}}
+                <div>
+                  {{person.name.first}} {{person.name.last}}
+                </div>
+              {{/link-to}}
+              </td>
+              <td>
+              {{#link-to 'person.edit' person}}
+                <div>
+                  Next
+                </div>
+              {{/link-to}}
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      no persons yet
+    {{/if}}
+</div>

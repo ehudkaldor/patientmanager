@@ -1,0 +1,38 @@
+<div class="ui raised segment">
+  {{isEditable}}
+  <div class="ui raised segment">
+    <i id='lock' class="large link icon" {{action 'unlock' target=view}}></i>
+      <div class="ui toggle button" {{action 'unlock' target=view}} id="unlock_button">
+        Unlock
+      </div>
+  </div>
+  <div class="ui fluid form segment">
+    <div class='ui header'>Name</div>
+    <div class="fields">
+      <div class="required field">
+        <label>First</label>
+        {{input id='firstname' class='ui field' name="first-name" placeholder="First Name" value=name.first}}
+      </div>
+      <div class="right field">
+        <label>Middle</label>
+        {{input name="middle-name" placeholder="Middle Name" value=name.middle}}
+      </div>
+      <div class="required field">
+        <label>Last</label>
+        {{input name="last-name" placeholder="Last Name" value=name.last}}
+      </div>
+    </div>
+    
+    <div>
+      {{#if gender}}{{gender}}{{/if}}
+      {{view.genderOption}}
+    </div>
+
+    <select name="gender" class="ui dropdown" id="gender">
+      <option value="">Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select>
+    
+  </div>
+</div>
