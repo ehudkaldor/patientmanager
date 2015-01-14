@@ -1,7 +1,13 @@
-@(message: String)
-
-@main("Welcome to Play") {
-
-    @play20.welcome(message)
-
-}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/main.css")">
+    <link rel="stylesheet" class="ui" type="text/css" href="@routes.Assets.at("stylesheets/semantic.min.css")">
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/semantic.css")">
+    <link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/fullcalendar.css")">
+  </head>
+  <body id="body">
+    @helper.requireJs(core = routes.Assets.at("third/require.min.js").url, module = routes.Assets.at("javascripts/main").url)
+  </body>
+</html>
