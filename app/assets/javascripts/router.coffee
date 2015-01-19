@@ -1,4 +1,21 @@
-define ["App", "ember-data", "ember", "models/Person", "models/Name", "controllers/PersonsController", "controllers/PersonEditController", "controllers/ApplicationController", "controllers/IndexController", "views/PersonsView", "views/IndexView", "views/ApplicationView", "views/PersonEditView"], (App, DS, Ember) ->
+define [
+	 "App", 
+	 "ember-data", 
+	 "ember", 
+  "routes/IndexRoute"
+  "routes/StaffRoute"
+	 "models/Person", 
+  "models/Name", 
+  "models/Staff", 
+	 "controllers/PersonsController", 
+	 "controllers/PersonEditController", 
+	 "controllers/ApplicationController", 
+	 "controllers/IndexController", 
+	 "views/PersonsView", 
+	 "views/IndexView", 
+	 "views/ApplicationView", 
+	 "views/PersonEditView"
+	], (App, DS, Ember) ->
   console.log("creating router")
 	 ->	 	 
     console.log("constructing routes in Router")
@@ -12,7 +29,9 @@ define ["App", "ember-data", "ember", "models/Person", "models/Name", "controlle
         @route('new')
         return
       )
+      @resource('staff')
       return
+      
     console.log("router constructed")
     
     App.ApplcationRoute = Ember.Route.extend
@@ -20,16 +39,17 @@ define ["App", "ember-data", "ember", "models/Person", "models/Name", "controlle
       model: ->
         console.log("application route")
       
-    App.IndexRoute = Ember.Route.extend
-      controllerName: "IndexController"
-      renderTemplate: () ->
-        @render(
-          into: 'application',
-#          outlet: 'main'
-        )
-
-	     model: ->
-        console.log("index route")
+#    App.IndexRoute = Ember.Route.extend
+##      controllerName: "IndexController"
+#      renderTemplate: () ->
+#        @render(
+#          into: 'application',
+#          controllerName: 'IndexController'
+##          outlet: 'main'
+#        )
+#
+#	     model: ->
+#        console.log("index route")
     
     App.PersonsRoute = Ember.Route.extend 
       controllerName: "PersonsController"
