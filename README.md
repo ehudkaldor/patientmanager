@@ -10,6 +10,7 @@ Staff members holds data on the practitioners. It is for the clinic administrati
 
 
 Exercise: 
+
 	backend: 
 		Play Framework (TypeSafe Activator), Scala
 		Database: TBD (relational, currently H2 in-memory database)

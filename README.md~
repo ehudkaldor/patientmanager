@@ -10,4 +10,13 @@ Staff members holds data on the practitioners. It is for the clinic administrati
 
 
 Exercise: 
-	backend: Play Framework (TypeSafe Activator), Scala
+	backend: 
+		Play Framework (TypeSafe Activator), Scala
+		Database: TBD (relational, currently H2 in-memory database)
+		Database connector: Scala ActiveRecord
+
+	frontend:
+		Ember.JS
+			currently with require.js as AMD, attempting to fork to using Ember-CLI
+		CSS: semantic.ui
+
