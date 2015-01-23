@@ -7,7 +7,6 @@ import play.api.libs.json.Json
 
 case class Patient(
   override val dateOfBirth: Long,
-  val userId: Option[Long] = None, 
   override val id: Long = 0) 
 extends ActiveRecord with Timestamps with Datestamps with Person {
   lazy val guardians = hasMany[Guardian]

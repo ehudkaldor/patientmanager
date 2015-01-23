@@ -6,11 +6,9 @@ define [
   "routes/StaffRoute"
 	 "models/Person", 
   "models/Name", 
-  "models/Staff", 
 	 "controllers/PersonsController", 
 	 "controllers/PersonEditController", 
 	 "controllers/ApplicationController", 
-	 "controllers/IndexController", 
 	 "views/PersonsView", 
 	 "views/IndexView", 
 	 "views/ApplicationView", 

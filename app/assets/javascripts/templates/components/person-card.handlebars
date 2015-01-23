@@ -1,0 +1,25 @@
+            <div class="ui card">
+              {{#link-to 'person.edit' person}}
+                <div class="image">
+                  <img src="/images/avatar/large/stevie.jpg">
+                </div>
+                <div class="content">
+                  <a class="header">{{person.name.first}} {{person.name.last}}</a>
+                  <div class="meta">
+                    <span class="date">Joined in 2014</span>
+                  </div>
+                  <div class="description"> 
+                    Stevie Feliciano is a library scientist living in New York City. She likes to spend her time reading, running, and writing.
+                  </div>
+                </div>
+              {{/link-to}}
+              <div class="extra content">
+                <a>
+                  <i class="user icon"></i>
+                  22 Friends
+                </a>
+              </div>
+              <div class="ui fitted toggle row checkbox">
+                <input type="checkbox"><label></label>
+              </div>              
+            </div>
