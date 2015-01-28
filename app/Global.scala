@@ -17,7 +17,9 @@
 import controllers.CustomRoutesService
 import java.lang.reflect.Constructor
 import securesocial.core.RuntimeEnvironment
-import service.{ DemoUser, MyEventListener, InMemoryUserService }
+import service.security.{DemoUser, MyEventListener, InMemoryUserService}
+import scala.collection.immutable.ListMap
+import securesocial.core.providers.UsernamePasswordProvider
 
 object Global extends play.api.GlobalSettings {
 
@@ -28,6 +30,10 @@ object Global extends play.api.GlobalSettings {
     override lazy val routes = new CustomRoutesService()
     override lazy val userService: InMemoryUserService = new InMemoryUserService()
     override lazy val eventListeners = List(new MyEventListener())
+    override lazy val providers = ListMap(
+      include(new UsernamePasswordProvider[DemoUser](userService, avatarService, viewTemplates, passwordHashers))
+    )
+  
   }
 
   /**
