@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package service
+package service.security
 
 import play.api.Logger
 import securesocial.core._
@@ -174,5 +174,5 @@ class InMemoryUserService extends UserService[DemoUser] {
 }
 
 // a simple User class that can have multiple identities
-case class DemoUser(main: BasicProfile, identities: List[BasicProfile])
+case class DemoUser(main: BasicProfile, identities: List[BasicProfile]) 
 
