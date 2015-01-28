@@ -27,7 +27,7 @@ import securesocial.core.services.{ UserService, SaveMode }
  *
  * IMPORTANT: This is just a sample and not suitable for a production environment since
  * it stores everything in memory.
- */
+ */ 
 class InMemoryUserService extends UserService[DemoUser] {
   val logger = Logger("application.controllers.InMemoryUserService")
 

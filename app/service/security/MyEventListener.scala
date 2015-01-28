@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package service
+package service.security
 
 import securesocial.core._
 import play.api.mvc.{ Session, RequestHeader }
