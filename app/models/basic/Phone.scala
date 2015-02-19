@@ -14,14 +14,14 @@ object Phone extends ActiveRecordCompanion[Phone] {
     implicit val phoneFormat = Json.format[Phone]
 }
 
-case class PhoneGroup(val personId: Option[Long] = None, override val id: Long = 0) extends ActiveRecord {
+case class PhoneGroup() extends ActiveRecord {
   lazy val mainPhone= hasOne[Phone]
   lazy val phones = hasMany[Phone]
   
-//  val personId: Option[Long] = None
   lazy val person = belongsTo[Patient]
+  val personId: Option[Long] = None
 }
 
 object PhoneGroup extends ActiveRecordCompanion[PhoneGroup] {
-    implicit val phoneGroupFormat = Json.format[PhoneGroup]
+//    implicit val phoneGroupFormat = Json.format[PhoneGroup]
 }
