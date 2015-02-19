@@ -3,6 +3,7 @@ package models.basic
 import com.github.aselab.activerecord.{ActiveRecord, ActiveRecordCompanion}
 import models.Patient
 import play.api.libs.json.Json
+import models.Person
 
 case class Address (
   addr1: String, 
@@ -12,22 +13,20 @@ case class Address (
   state: String, 
   zip: String, 
   country: String,
-  val addressGroupId: Option[Long] = None,
-  override val id: Long = 0) extends ActiveRecord {
-//    val addressGroupId: Option[Long] = None
-    lazy val addressGroup = belongsTo[AddressGroup]
+override val id: Long = 0) extends ActiveRecord {
+  lazy val addressGroup = belongsTo[AddressGroup]
+  val addressGroupId: Option[Long] = None  
 }
 
 object Address extends ActiveRecordCompanion[Address] {
-    implicit val addressFormat = Json.format[Address]
+  implicit val addressFormat = Json.format[Address]
 }
 
-case class AddressGroup(val personId: Option[Long] = None, override val id: Long = 0) extends ActiveRecord {
+case class AddressGroup(override val id: Long = 0) extends ActiveRecord {
   lazy val mainAddress = hasOne[Address]
   lazy val addresses = hasMany[Address]
-  
-//  val personId: Option[Long] = None
-  lazy val person = belongsTo[Patient]
+  lazy val person = belongsTo[Person]
+  val personId: Option[Long] = None
 }
 
 object AddressGroup extends ActiveRecordCompanion[AddressGroup] {
