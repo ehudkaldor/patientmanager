@@ -5,8 +5,7 @@ import models.Patient
 import play.api.libs.json.Json
 import com.github.aselab.activerecord.annotations.Unique
 
-case class Email(@Unique email: String, emailType: String, val emailGroupId: Option[Long] = None, override val id: Long = 0) extends ActiveRecord {
-//  val emailGroupId: Option[Long] = None
+case class Email(@Unique email: String, emailType: String) extends ActiveRecord {
   lazy val emailGroup = belongsTo[EmailGroup]
 }
 
@@ -14,14 +13,14 @@ object Email extends ActiveRecordCompanion[Email] {
     implicit val emailFormat = Json.format[Email]
 }
 
-case class EmailGroup(val personId: Option[Long] = None,override val id: Long = 0) extends ActiveRecord {
+case class EmailGroup() extends ActiveRecord {
   lazy val mainEmail = hasOne[Email]
   lazy val emails = hasMany[Email]
   
-//  val personId: Option[Long] = None
+  val personId: Option[Long] = None
   lazy val person = belongsTo[Patient]
 } 
 
 object EmailGroup extends ActiveRecordCompanion[EmailGroup] {
-    implicit val emailGroupFormat = Json.format[EmailGroup]
+//    implicit val emailGroupFormat = Json.format[EmailGroup]
 }
