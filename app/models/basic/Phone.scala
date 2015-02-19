@@ -4,7 +4,7 @@ import com.github.aselab.activerecord.{ActiveRecord, ActiveRecordCompanion}
 import models.Patient
 import play.api.libs.json.Json
 
-case class Phone(phone: String, phoneType: String, override val id: Long = 0) extends ActiveRecord {
+case class Phone(phone: String, phoneType: String) extends ActiveRecord {
   val phoneGroupId: Option[Long] = None
   lazy val phoneGroup = belongsTo[PhoneGroup]
 
