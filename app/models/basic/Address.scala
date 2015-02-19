@@ -12,8 +12,7 @@ case class Address (
   city: String, 
   state: String, 
   zip: String, 
-  country: String,
-override val id: Long = 0) extends ActiveRecord {
+  country: String) extends ActiveRecord {
   lazy val addressGroup = belongsTo[AddressGroup]
   val addressGroupId: Option[Long] = None  
 }
@@ -22,7 +21,7 @@ object Address extends ActiveRecordCompanion[Address] {
   implicit val addressFormat = Json.format[Address]
 }
 
-case class AddressGroup(override val id: Long = 0) extends ActiveRecord {
+case class AddressGroup() extends ActiveRecord {
   lazy val mainAddress = hasOne[Address]
   lazy val addresses = hasMany[Address]
   lazy val person = belongsTo[Person]
@@ -30,5 +29,5 @@ case class AddressGroup(override val id: Long = 0) extends ActiveRecord {
 }
 
 object AddressGroup extends ActiveRecordCompanion[AddressGroup] {
-    implicit val addressGroupFormat = Json.format[AddressGroup]
+//    implicit val addressGroupFormat = Json.format[AddressGroup]
 }
