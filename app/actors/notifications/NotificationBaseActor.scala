@@ -1,15 +1,13 @@
 package actors.notifications
 
 import akka.actor.{Actor, ActorLogging}
-import actors.notifications.messages.AddPerson
 import scala.collection.mutable.HashMap
 import java.util.UUID
-import play.api.libs.iteratee.Enumerator
+import play.api.libs.iteratee.{Enumerator, Concurrent}
 import play.api.libs.iteratee.Concurrent.Channel
 import play.api.libs.json.JsValue
 import actors.message.dao._
 import play.api.Logger
-import play.api.libs.iteratee.Concurrent
 
 class NotificationBaseActor extends Actor with ActorLogging{
   
