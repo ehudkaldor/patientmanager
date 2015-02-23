@@ -1,13 +1,13 @@
 package models.basic
 
 import com.github.aselab.activerecord.ActiveRecordSpecification
-import com.github.aselab.activerecord.dsl._
+//import com.github.aselab.activerecord.dsl._
 
 object AddressSpec extends ActiveRecordSpecification {
   
   "Address model" should {
     "Create a transient Address" in {
-      val addr1line = Address("street1", None, None, "city", "state", "zip", "country", None)
+      val addr1line = Address("street1", None, None, "city", "state", "zip", "country")
       val addr2line = Address("street1", Option("street2"), None, "city", "state", "zip", "country")
       val addr3line = Address("street1", Option("street2"), Option("street3"), "city", "state", "zip", "country")
       
@@ -37,13 +37,14 @@ object AddressSpec extends ActiveRecordSpecification {
       addr1line must not be(None)
       
       addrGroup.addresses << addr1line
+      addrGroup.mainAddress := addr1line
 
       addr1line.addressGroupId must not be(None)
       AddressGroup.find(addr1line.addressGroupId.get) must not be(None)
       AddressGroup.find(addr1line.addressGroupId.get).get must equalTo(addrGroup)
       
-      addrGroup.addresses.toList.head must equalTo(addr1line)
-      addr1line.addressGroup.get must equalTo(addrGroup)
+      addrGroup.mainAddress.toOption must not equalTo(None)
+      addrGroup.mainAddress.toOption.get must equalTo(addr1line)
     }
     
     "Create an Address, assign to an AddressGroup and change to a different AddressGroup" in {
